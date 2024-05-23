@@ -8,27 +8,27 @@ int range(int start, int end){
     start = end;
     end = st;    
     }
-    printf("The Armstrong numbers are: ");
+    printf("The Armstrong numbers are:");
     for (int i = start; i<= end; i++){
-        if (isArmstrong(i)) printf("%d ", i);
+        if (isArmstrong(i)) printf(" %d", i);
     }
     printf("\n");
 
-    printf("The Palindromes are: ");
+    printf("The Palindromes are:");
     for (int i = start; i<= end; i++){
-    if (isPalindrome(i)) printf("%d ", i);
+    if (isPalindrome(i)) printf(" %d", i);
     } 
     printf("\n");
-    printf("The Prime numbers are: ");
+    printf("The Prime numbers are:");
     for (int i = start; i<= end; i++){
-        if (isPrime(i)) printf("%d ", i);
+        if (isPrime(i)) printf(" %d", i);
     }
     printf("\n");
-    printf("The Strong numbers are: ");
+    printf("The Strong numbers are:");
     for (int i = start; i<= end; i++){
-    if (isStrong(i)) printf("%d ", i);
+    if (isStrong(i)) printf(" %d", i);
     }
-     
+    printf("\n");
     return 0;
 }
 
@@ -41,22 +41,7 @@ int main() {
     scanf("%d", &end);
     range(start, end);
 
-/*
-gcc -c advancedClassificationLoop.c -o advancedClassificationLoop.o
-gcc -c basicClassification.c -o basicClassification.o
-gcc -c myMain.c -o myMain.o
-gcc -o myMain basicClassification.o advancedClassificationLoop.o myMain.o -lm
-*/
-/*
-gcc -c advancedClassificationRecursion.c -o advancedClassificationRecursion.o
-gcc -c basicClassification.c -o basicClassification.o
-gcc -c myMain.c -o myMain.o
-gcc -o myMain basicClassification.o advancedClassificationRecursion.o myMain.o -lm
-*/
-/*
-gcc myMain.c basicClassification.c advancedClassificationRecursion.c -o myMain -lm
 
-*/
 
     return 0;
 }

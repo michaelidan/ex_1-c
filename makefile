@@ -1,4 +1,3 @@
-# .PHONY - will tell the makefile that the following targets are not files.
 .PHONY: clean all
 
 # ~ program name ~
@@ -11,9 +10,10 @@ CFLAGS = -Wall # compilation flags
 LFLAGS = -shared # linking flags
 SFLAGS = rcu # static library flags
 FPIC = -fPIC # position independent code flag
+LIBM = -lm # math library flag
 
 # ~ files ~
-# the file extention will be added by hand.
+# the file extension will be added by hand.
 MAIN = main
 HEADER = NumClass.h
 BASIC = basicClassification
@@ -86,7 +86,7 @@ $(DYN_LIB_LOOP): $(LOOP).o $(BASIC).o
 # ~ create the main program ~
 # will create the main program, the program will called maindloop, and be linked  to the dynamic loop library.
 maindloop: $(MAIN).o $(DYN_LIB_LOOP)
-	$(CC) $(CFLAGS) $< ./$(DYN_LIB_LOOP) -o $@
+	$(CC) $(CFLAGS) $< ./$(DYN_LIB_LOOP) -o $@ $(LIBM)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -106,7 +106,7 @@ $(STAT_LIB_REC): $(REC).o $(BASIC).o
 # will create the main program, the program will called mains, and be linked  to the static recursive library.
 # if the program is already exists, *do not* compile it again.
 mains: $(MAIN).o $(STAT_LIB_REC)
-	$(CC) $(CFLAGS) $< ./$(STAT_LIB_REC) -o $@
+	$(CC) $(CFLAGS) $< ./$(STAT_LIB_REC) -o $@ $(LIBM)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -123,5 +123,5 @@ $(DYN_LIB_REC): $(REC).o $(BASIC).o
 # ~ create the main program ~
 # will create the main program, the program will called maindrec, and be linked  to the dynamic recursive library.
 maindrec: $(MAIN).o $(DYN_LIB_REC)
-	$(CC) $(CFLAGS) $< ./$(DYN_LIB_REC) -o $@
+	$(CC) $(CFLAGS) $< ./$(DYN_LIB_REC) -o $@ $(LIBM)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

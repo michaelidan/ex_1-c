@@ -1,6 +1,5 @@
 .PHONY: clean all
 
-
 CC = gcc
 AR = ar 
 RANLIB = ranlib 
